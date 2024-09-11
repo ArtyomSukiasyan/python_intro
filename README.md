@@ -1,0 +1,1 @@
+Simple Python projects for mastering Python syntax. Detailed documentation in each project
