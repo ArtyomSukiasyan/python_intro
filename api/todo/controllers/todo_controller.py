@@ -17,3 +17,16 @@ def create_todo(data):
 
 def get_all_todos():
     return list(todos_collection.find({}))
+
+
+def update_todo(id, data):
+    todos_collection.update_one(
+        {"_id": id},
+        {"$set": {
+            "title": data.get('title'),
+            "description": data.get('description'),
+            "status": data.get('status')
+        }}
+    )
+
+    return todos_collection.find_one({"_id": id})
