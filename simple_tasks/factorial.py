@@ -7,6 +7,13 @@ def calc_factorial(num):
     return fac
 
 
+def calc_factorial_rec(num):
+    if num == 1:
+        return 1
+
+    return num * calc_factorial_rec(num - 1)
+
+
 def get_num():
     while True:
         try:
@@ -19,3 +26,4 @@ def get_num():
 
 user_input = get_num()
 print(calc_factorial(user_input))
+print(calc_factorial_rec(user_input))
