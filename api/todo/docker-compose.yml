@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:6.0.5
+    container_name: mongo-dev
+    restart: always
+    networks:
+      - dev-network
+    volumes:
+      - ./data/dev/mongo:/data/db
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    image: mongo-express
+    restart: unless-stopped
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://mongo-dev:27017/books
+      - ME_CONFIG_BASICAUTH_USERNAME=secret
+      - ME_CONFIG_BASICAUTH_PASSWORD=secret
+    networks:
+      - dev-network
+    ports:
+      - "8081:8081"
+networks:
+  dev-network:
+    driver: bridge
