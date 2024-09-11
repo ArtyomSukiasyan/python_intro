@@ -30,3 +30,7 @@ def update_todo(id, data):
     )
 
     return todos_collection.find_one({"_id": id})
+
+
+def delete_todo(id):
+    todos_collection.delete_one({"_id": id})
